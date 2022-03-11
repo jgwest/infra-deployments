@@ -8,7 +8,9 @@ spec:
 
   source:
     path: components/gitops
-    repoURL: https://github.com/redhat-appstudio/infra-deployments.git
+    repoURL: https://github.com/jgwest/infra-deployments.git
+    targetRevision: update-mar-4-2022
+
   destination:
     namespace: gitops
     server: https://kubernetes.default.svc
