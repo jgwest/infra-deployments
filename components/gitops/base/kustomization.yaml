@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- https://github.com/jgwest/managed-gitops/manifests/kcp?ref=577416c20438c112be00fceea59ebd3975443d77
+- https://github.com/jgwest/managed-gitops/manifests/kcp?ref=a43e3b9f90a76acab3780da608de590693b0747f
 # TODO: Make sure this is replaced with reference to managed-gitops repo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! (more exclamation marks so it's easy recognizable in PR view :)  )
 
 images:
