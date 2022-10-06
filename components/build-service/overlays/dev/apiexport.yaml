@@ -20,8 +20,8 @@ spec:
     identityHash: pipeline-service
     resource: pipelineruns
   - group: appstudio.redhat.com
-    identityHash: application-api
+    identityHash: e02d8f1505c6433defca4046297eb54f012eff366afc174cf587585541d4eddc
     resource: components
   - group: appstudio.redhat.com
-    identityHash: application-api
+    identityHash: e02d8f1505c6433defca4046297eb54f012eff366afc174cf587585541d4eddc
     resource: applications
