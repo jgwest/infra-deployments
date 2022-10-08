@@ -2,12 +2,17 @@
   {
     "op": "replace",
     "path": "/data/VAULTHOST",
-    "value": "https://vault-spi-vault.apps.ci-ln-mytsys2-72292.origin-ci-int-gce.dev.rhcloud.com"
+    "value": "https://vault-spi-vault.apps.ci-ln-7cfm7yt-76ef8.origin-ci-int-aws.dev.rhcloud.com"
   },
   {
     "op": "replace",
     "path": "/data/BASEURL",
-    "value": "https://spi-oauth-kcp-foqvh3onxafq.apps.ci-ln-mytsys2-72292.origin-ci-int-gce.dev.rhcloud.com"
+    "value": "https://spi-oauth-kcp-2e15wt89aa9w.apps.ci-ln-7cfm7yt-76ef8.origin-ci-int-aws.dev.rhcloud.com"
+  },
+  {
+    "op": "add",
+    "path": "/data/VAULTINSECURETLS",
+    "value": "true"
   },
   {
     "op": "add",
