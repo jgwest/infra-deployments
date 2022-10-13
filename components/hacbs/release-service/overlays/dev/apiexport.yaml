@@ -8,19 +8,19 @@ spec:
   permissionClaims:
   - resource: "applications"
     group: "appstudio.redhat.com"
-    identityHash: application-api
+    identityHash: 5356eae696fc6844251a8cd23e0c6077843421c592f8a4f51382f2ae3574dc24
   - resource: "components"
     group: "appstudio.redhat.com"
-    identityHash: application-api
+    identityHash: 5356eae696fc6844251a8cd23e0c6077843421c592f8a4f51382f2ae3574dc24
   - resource: "applicationsnapshots"
     group: "appstudio.redhat.com"
-    identityHash: application-api
+    identityHash: 5356eae696fc6844251a8cd23e0c6077843421c592f8a4f51382f2ae3574dc24
   - resource: "environments"
     group: "appstudio.redhat.com"
-    identityHash: application-api
+    identityHash: 5356eae696fc6844251a8cd23e0c6077843421c592f8a4f51382f2ae3574dc24
   - resource: "applicationsnapshotenvironmentbindings"
     group: "appstudio.redhat.com"
-    identityHash: application-api
+    identityHash: 5356eae696fc6844251a8cd23e0c6077843421c592f8a4f51382f2ae3574dc24
   - resource: "pipelineruns"
     group: "tekton.dev"
     identityHash: pipeline-service
