@@ -22,6 +22,8 @@ if ! git diff --exit-code --quiet; then
     exit 1
 fi
 
+set -x
+
 APPSTUDIO_WORKSPACE=${APPSTUDIO_WORKSPACE:-"redhat-appstudio"}
 HACBS_WORKSPACE=${HACBS_WORKSPACE:-"redhat-hacbs"}
 
