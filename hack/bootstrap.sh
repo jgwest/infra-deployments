@@ -168,6 +168,7 @@ case $MODE in
         ;;
     "preview")
         configure_kcp dev "false"
+        echo "preview!!!!!"
         $ROOT/hack/preview.sh
         ;;
     *)
