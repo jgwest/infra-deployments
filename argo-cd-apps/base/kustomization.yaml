@@ -10,7 +10,7 @@ resources:
 - integration-service.yaml
 - spi.yaml
 - gitops-core-service.yaml
-- gitops-appstudio-service.yaml
+#- gitops-appstudio-service.yaml
 - kcp-syncer.yaml
 - monitoring-workload-in-cluster.yaml
 - build-templates.yaml

@@ -8,7 +8,7 @@ resources:
 - spi.yaml
 - pipeline-service.yaml
 - gitops-core-service.yaml
-- gitops-appstudio-service.yaml
+#- gitops-appstudio-service.yaml
 
 patches:
 - patch: |-
