@@ -148,7 +148,7 @@ stringData:
         token: ${token}
 "
 
-    echo "${kubeconfig_secret}" | KUBECONFIG="${CPS_KUBECONFIG}" kubectl apply -f -
+    echo "${kubeconfig_secret}" | KUBECONFIG="${KCP_KUBECONFIG}" kubectl apply -f -
 }
 
 create_gitops_service_argocd_kubeconfig_secret "argocd-application-controller" "kcp-kubeconfig-server"
