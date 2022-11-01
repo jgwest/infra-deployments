@@ -98,6 +98,61 @@ if ! kubectl --kubeconfig ${KCP_KUBECONFIG} get secret -n gitops gitops-postgres
     --namespace=gitops \
     --from-literal=postgresql-password=$(openssl rand -base64 20)
 fi
+
+
+# Create a Secret containing connection credentials for the service provider KCP workspace. 
+# This Secret is then mounted into the Argo CD Application Controller.
+#
+# Normally KCP would do this for us, but in this case we are using a StatefulSet to run the
+# Argo CD Application controller, which is not supported by KCP's syncer, so we need to this manually.
+#
+# See GITOPSRVCE-237 for a better solution, which will obviate the need for this function. 
+create_gitops_service_argocd_kubeconfig_secret() {
+    ARGOCD_NAMESPACE=gitops-service-argocd
+    sa_name=$1
+    sa_secret_name=$(KUBECONFIG="${KCP_KUBECONFIG}" kubectl get sa "${sa_name}" -n $ARGOCD_NAMESPACE -o=jsonpath='{.secrets[0].name}')
+
+    ca=$(KUBECONFIG="${KCP_KUBECONFIG}" kubectl get secret/"${sa_secret_name}" -n $ARGOCD_NAMESPACE -o jsonpath='{.data.ca\.crt}')
+    token=$(KUBECONFIG="${KCP_KUBECONFIG}" kubectl get secret/"${sa_secret_name}" -n $ARGOCD_NAMESPACE -o jsonpath='{.data.token}' | base64 --decode)
+    # namespace=$(KUBECONFIG="${KCP_KUBECONFIG}" kubectl get secret/"${sa_secret_name}" -n $ARGOCD_NAMESPACE -o jsonpath='{.data.namespace}' | base64 --decode)
+
+    server=$(KUBECONFIG="${KCP_KUBECONFIG}" kubectl config view -o jsonpath='{.clusters[?(@.name == "workspace.kcp.dev/current")].cluster.server}')
+
+    secret_name=$2
+    kubeconfig_secret="
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: ${secret_name}
+  namespace: ${ARGOCD_NAMESPACE}
+stringData:
+  kubeconfig: |
+    apiVersion: v1
+    kind: Config
+    clusters:
+    - name: default-cluster
+      cluster:
+        certificate-authority-data: ${ca}
+        server: ${server}
+    contexts:
+    - name: default-context
+      context:
+        cluster: default-cluster
+        namespace: ${ARGOCD_NAMESPACE}
+        user: default-user
+    current-context: default-context
+    users:
+    - name: default-user
+      user:
+        token: ${token}
+"
+
+    echo "${kubeconfig_secret}" | KUBECONFIG="${CPS_KUBECONFIG}" kubectl apply -f -
+}
+
+create_gitops_service_argocd_kubeconfig_secret "argocd-application-controller" "kcp-kubeconfig-server"
+
 echo "GitOps Service configured"
 
 
