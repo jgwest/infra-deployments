@@ -4,26 +4,20 @@ resources:
   - ./argocd-roles
   - ./rbac
   - https://github.com/redhat-appstudio/application-service/config/default?ref=19fce3ccf2e55ed70642bfe3d23d90a40024044a
-
-
 components:
   - ../k-components/manager-resources
   - ../k-components/enable-profiling
-
 images:
   - name: quay.io/redhat-appstudio/application-service
     newName: quay.io/redhat-appstudio/application-service
     newTag: 19fce3ccf2e55ed70642bfe3d23d90a40024044a
-
 configMapGenerator:
   - literals:
-      - GITHUB_ORG=""
+      - GITHUB_ORG=appstudio-test-org-cwdbt
     name: github-config
     behavior: replace
   - literals:
       - ENVIRONMENT="development"
     name: feature-flag-config
     behavior: replace
-
-
 namespace: application-service

@@ -2,12 +2,12 @@
   {
     "op": "replace",
     "path": "/data/VAULTHOST",
-    "value": "https://vault-spi-vault.apps.appstudio-stage.x99m.p1.openshiftapps.com"
+    "value": "https://vault-spi-vault.apps.ci-ln-r3twxlb-76ef8.origin-ci-int-aws.dev.rhcloud.com"
   },
   {
     "op": "replace",
     "path": "/data/BASEURL",
-    "value": "https://spi-oauth-spi-system.apps.appstudio-stage.x99m.p1.openshiftapps.com"
+    "value": "https://spi-oauth-spi-system.apps.ci-ln-r3twxlb-76ef8.origin-ci-int-aws.dev.rhcloud.com"
   },
   {
     "op": "add",
